@@ -57,8 +57,7 @@ class BucketlistTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         # Test to see if it exists, should return a 404
         result = self.client().get('/bucketlists/1')
-        #self.assertEqual(result.status_code, 404)
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 404)
 
     def tearDown(self):
         with self.app.app_context():
