@@ -13,7 +13,7 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/test_db'
+    SQLALCHEMY_DATABASE_URI = 'postgres://ajbtuzbq:GBzd5nVae0xkzXa2tcFSB0mV6gIAuB-D@stampy.db.elephantsql.com:5432/ajbtuzbq'
     DEBUG = True
 
 class ProductionConfig(Config):
