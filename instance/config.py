@@ -13,13 +13,13 @@ class DevelopmentConfig(Config):
 
 class TestingConfig(Config):
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = 'postgres://ajbtuzbq:GBzd5nVae0xkzXa2tcFSB0mV6gIAuB-D@stampy.db.elephantsql.com:5432/ajbtuzbq'
     DEBUG = True
+    SQLALCHEMY_DATABASE_URI = 'postgres://ajbtuzbq:GBzd5nVae0xkzXa2tcFSB0mV6gIAuB-D@stampy.db.elephantsql.com:5432/ajbtuzbq'
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgres://ajbtuzbq:GBzd5nVae0xkzXa2tcFSB0mV6gIAuB-D@stampy.db.elephantsql.com:5432/ajbtuzbq'
     TESTING = False
+    SQLALCHEMY_DATABASE_URI = 'postgres://ec2-34-228-225-55.compute-1.amazonaws.com:5432/demo'
 
 app_config = {
     'development': DevelopmentConfig,

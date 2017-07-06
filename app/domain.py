@@ -1,18 +1,20 @@
 from app import db
+from app.string_utils import build_connection_string
 
-class Bucketlist(db.Model):
-
-    __tablename__ = 'bucketlists'
+class Datasource(db.Model):
+    __tablename__ = 'datasources'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
+    connection_string = db.Column(db.String(255))
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(
         db.DateTime, default=db.func.current_timestamp(),
         onupdate=db.func.current_timestamp())
 
-    def __init__(self, name):
+    def __init__(self, name, driver, host, port, db):
         self.name = name
+        self.connection_string = build_connection_string(driver, host, port, db)
 
     def save(self):
         db.session.add(self)
@@ -20,11 +22,11 @@ class Bucketlist(db.Model):
 
     @staticmethod
     def get_all():
-        return Bucketlist.query.all()
+        return Datasource.query.all()
 
     def delete(self):
         db.session.delete(self)
         db.session.commit()
 
     def __repr__(self):
-        return "<Bucketlist: {}>".format(self.name)
+        return "<Datasource: {}>".format(self.name)
